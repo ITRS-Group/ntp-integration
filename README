@@ -11,7 +11,7 @@ Download at least the XML file or use the remote "raw" URL direct from github fo
 public access and once validated add an NTP-Status sampler to your chosen Managed Entities or into your
 preferred infrastructure monitoring Type. 
 
-Additinally the environment variable NTPHOST can be defined to query a remote host. Default is a localhost connection.
+Additionally the environment variable NTPHOST can be defined to query a remote host. Default is a localhost connection.
 
 The PATH environment variable is defined in the default sampler as most users do not have ntpq in their default path.
 
