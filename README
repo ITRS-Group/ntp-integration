@@ -1,0 +1,16 @@
+Initial NTP-Status integration include file.
+
+This currently supports the standard ntpd package and as well as the enhanced Linux one (where ntpq has a wide option). Needs more testing across OSes
+
+Requiers bash, will not work with default Bourne or Korn shells as it requires bash specific extensions.
+
+The PATH environment variable is defined as most users do not have ntpq in their default path.
+
+NTPHOST can be defined to query a remote host. Default is a localhost connection.
+
+Included file priority will need to be checked.
+
+TODO:
+* Windows support for Meinberg NTPD
+* Chrony support (Different sampler)
+
