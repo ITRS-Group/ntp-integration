@@ -65,7 +65,7 @@ regexp=&apos;^..* &apos;
 hostname=&quot;&quot;
 for line in $NTPQOUTPUT; do
   if [[ ! $headers ]]; then
-          headers=$(echo $line | sed -E -e &apos;s/^\s*//&apos; -e &apos;s/\s+/,/g&apos; -e &apos;s/remote/remote,tally/&apos; -e &apos;s/,st,/,stratum,/&apos; -e &apos;s/,t,/,type,/&apos;)
+          headers=$(echo $line | sed -r -e &apos;s/^\s*//&apos; -e &apos;s/\s+/,/g&apos; -e &apos;s/remote/remote,tally/&apos; -e &apos;s/,st,/,stratum,/&apos; -e &apos;s/,t,/,type,/&apos;)
           echo &quot;$headers&quot;
   else
           if [[ $hostname ]]; then
@@ -104,8 +104,8 @@ for line in $NTPQOUTPUT; do
 
           esac
           output=${output:1}
-          output=$(echo $output | sed -E -e &apos;s/ +/,/g&apos;)
-          output=$(echo $output | sed -E -e &quot;s/,/,$tally,/&quot;)
+          output=$(echo $output | sed -r -e &apos;s/ +/,/g&apos;)
+          output=$(echo $output | sed -r -e &quot;s/,/,$tally,/&quot;)
           echo $output
   fi
 
