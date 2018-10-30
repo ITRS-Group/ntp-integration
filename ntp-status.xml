@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!--Edited using Gateway Setup Editor version GA4.6.0-180328 at 2018-10-30 12:20:55 by pgalbavy on ITRSLP146-->
+<!--Edited using Gateway Setup Editor version GA4.6.0-180328 at 2018-10-30 12:37:47 by pgalbavy on ITRSLP146-->
 <!-- Gateway-created setup include file for user LDN\pgalbavy at 217.111.163.58 -->
 <gateway compatibility="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.itrsgroup.com/GA4.8.1-180814/gateway.xsd">
 	<samplers>
@@ -127,7 +127,11 @@ NTP_ROOTDISP=$(expr &quot;$NTPQRV&quot; : &apos;.*rootdisp=\([-0-9\.]*\)&apos;)
 echo &quot;&lt;!&gt;ntpRootDispersion,$NTP_ROOTDISP&quot;
 
 NTPSTATUS_VERSION=&apos;$Id$&apos;
-echo &quot;&lt;!&gt;versionId,$NTPSTATUS_VERSION&quot;
+if [[ ${#NTPSTATUS_VERSION} &gt; 4 ]]; then
+    echo &quot;&lt;!&gt;versionId,$NTPSTATUS_VERSION&quot;
+else
+    echo &quot;&lt;!&gt;versionId,N/A&quot;
+fi
 
 exit 0
 </data>
