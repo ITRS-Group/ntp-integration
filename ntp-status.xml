@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!--Edited using Gateway Setup Editor version GA4.6.0-180328 at 2018-10-25 13:26:27 by pgalbavy on ITRSLP146-->
+<!--Edited using Gateway Setup Editor version GA4.6.0-180328 at 2018-10-30 11:48:38 by pgalbavy on ITRSLP146-->
 <!-- Gateway-created setup include file for user LDN\pgalbavy at 217.111.163.58 -->
-<gateway compatibility="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.itrsgroup.com/GA4.5.0-171121/gateway.xsd">
+<gateway compatibility="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.itrsgroup.com/GA4.8.1-180814/gateway.xsd">
 	<samplers>
 		<sampler name="NTP-Status">
 			<var-group>
@@ -65,7 +65,8 @@ regexp=&apos;^..* &apos;
 hostname=&quot;&quot;
 for line in $NTPQOUTPUT; do
   if [[ ! $headers ]]; then
-          headers=$(echo $line | sed -r -e &apos;s/^\s*//&apos; -e &apos;s/\s+/,/g&apos; -e &apos;s/remote/remote,tally/&apos; -e &apos;s/,st,/,stratum,/&apos; -e &apos;s/,t,/,type,/&apos;)
+          # sed on solaris does not support -r or &quot;+&quot;, hence the double space and &quot;*&quot; - do not change
+          headers=$(echo $line | sed -e &apos;s/^ *//&apos; -e &apos;s/  */,/g&apos; -e &apos;s/remote/remote,tally/&apos; -e &apos;s/,st,/,stratum,/&apos; -e &apos;s/,t,/,type,/&apos;)
           echo &quot;$headers&quot;
   else
           if [[ $hostname ]]; then
@@ -104,8 +105,8 @@ for line in $NTPQOUTPUT; do
 
           esac
           output=${output:1}
-          output=$(echo $output | sed -r -e &apos;s/ +/,/g&apos;)
-          output=$(echo $output | sed -r -e &quot;s/,/,$tally,/&quot;)
+          output=$(echo $output | sed -e &apos;s/  */,/g&apos;)
+          output=$(echo $output | sed -e &quot;s/,/,$tally,/&quot;)
           echo $output
   fi
 
