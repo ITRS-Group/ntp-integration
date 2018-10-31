@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!--Edited using Gateway Setup Editor version GA4.6.0-180328 at 2018-10-30 13:01:08 by pgalbavy on ITRSLP146-->
+<!--Edited using Gateway Setup Editor version GA4.9.0-181029 at 2018-10-31 09:49:03 by LDN\pgalbavy logged on to gateway trainingvmGateway from ITRSLP146-->
 <!-- Gateway-created setup include file for user LDN\pgalbavy at 217.111.163.58 -->
-<gateway compatibility="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.itrsgroup.com/GA4.8.1-180814/gateway.xsd">
+<gateway compatibility="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.itrsgroup.com/GA4.9.0-181015/gateway.xsd">
 	<samplers>
 		<sampler name="NTP-Status">
 			<var-group>
@@ -143,6 +143,115 @@ exit 0
 					<showExecutionDuration>false</showExecutionDuration>
 				</toolkit>
 			</plugin>
+			<schemas>
+				<dataviews>
+					<dataviewSchema>
+						<schema>
+							<data>
+								<headlines>
+									<headline>
+										<name>samplingStatus</name>
+										<string/>
+									</headline>
+									<headline>
+										<name>ntpVersion</name>
+										<string/>
+									</headline>
+									<headline>
+										<name>ntpRootDelay</name>
+										<float32>
+											<unitOfMeasure>seconds</unitOfMeasure>
+										</float32>
+									</headline>
+									<headline>
+										<name>ntpOffset</name>
+										<float32>
+											<unitOfMeasure>seconds</unitOfMeasure>
+										</float32>
+									</headline>
+									<headline>
+										<name>ntpRootDispersion</name>
+										<float32>
+											<unitOfMeasure>seconds</unitOfMeasure>
+										</float32>
+									</headline>
+									<headline>
+										<name>versionId</name>
+										<string/>
+									</headline>
+								</headlines>
+								<columns>
+									<column>
+										<name>remote</name>
+										<string/>
+									</column>
+									<column>
+										<name>tally</name>
+										<string/>
+									</column>
+									<column>
+										<name>refid</name>
+										<string/>
+									</column>
+									<column>
+										<name>stratum</name>
+										<int32>
+											<unitOfMeasure/>
+										</int32>
+									</column>
+									<column>
+										<name>type</name>
+										<string/>
+									</column>
+									<column>
+										<name>when</name>
+										<int32>
+											<unitOfMeasure>seconds</unitOfMeasure>
+										</int32>
+									</column>
+									<column>
+										<name>poll</name>
+										<int32>
+											<unitOfMeasure>seconds</unitOfMeasure>
+										</int32>
+									</column>
+									<column>
+										<name>reach</name>
+										<int32>
+											<unitOfMeasure/>
+										</int32>
+									</column>
+									<column>
+										<name>delay</name>
+										<float32>
+											<unitOfMeasure>seconds</unitOfMeasure>
+										</float32>
+									</column>
+									<column>
+										<name>offset</name>
+										<float32>
+											<unitOfMeasure>seconds</unitOfMeasure>
+										</float32>
+									</column>
+									<column>
+										<name>jitter</name>
+										<float32>
+											<unitOfMeasure>seconds</unitOfMeasure>
+										</float32>
+									</column>
+									<column>
+										<name>disp</name>
+										<float32>
+											<unitOfMeasure>seconds</unitOfMeasure>
+										</float32>
+									</column>
+								</columns>
+								<publish>true</publish>
+							</data>
+						</schema>
+					</dataviewSchema>
+				</dataviews>
+			</schemas>
 		</sampler>
 	</samplers>
 	<rules>
